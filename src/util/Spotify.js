@@ -1,5 +1,5 @@
 const clientId = "c39c93bbf05745fb986d1e566004eb31";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://localhost:3000";
 let accessToken = "";
 
 export const Spotify = {
@@ -22,8 +22,7 @@ export const Spotify = {
       window.history.pushState("Access Token", null, "/");
       return accessToken;
     } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=
-      token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
   },
@@ -54,13 +53,13 @@ export const Spotify = {
     if (!name || !trackUris.length) {
       return;
     }
-    const accessToken = Spotify.getAccessToken;
+    const accessToken = Spotify.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
     return fetch(`https://api.spotify.com/v1/me`, { headers: headers })
       .then((response) => response.json())
       .then((jsonResponse) => {
-        userId = jsonResponse.Id;
+        userId = jsonResponse.id;
         return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           headers: headers,
           method: "POST",
@@ -68,7 +67,7 @@ export const Spotify = {
         })
           .then((response) => response.json())
           .then((jsonResponse) => {
-            const playlistId = jsonResponse.Id;
+            const playlistId = jsonResponse.id;
             return fetch(
               `https:/api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,
               {
