@@ -12,6 +12,7 @@ class Track extends React.Component {
     let playButton = this.state.showPlayButton;
     this.setState({ showPlayButton: !playButton });
   }
+
   addTrack = () => {
     this.props.onAdd(this.props.track);
   };
@@ -38,9 +39,10 @@ class Track extends React.Component {
     return (
       <div className="Track">
         <div className="Track-information">
-          <button className="Preview-button" onClick={this.updatePlayButton}>
-            Preview
-          </button>
+          <button
+            className="Preview-button"
+            onClick={this.updatePlayButton}
+          ></button>
           <h3>{this.props.track.name}</h3>
           <p>
             {this.props.track.artist} | {this.props.track.album}
