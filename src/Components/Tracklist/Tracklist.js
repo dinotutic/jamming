@@ -1,7 +1,6 @@
 import React from "react";
 import "./Tracklist.css";
 import Track from "../Track/Track";
-import { toHaveFocus } from "@testing-library/jest-dom/dist/matchers";
 
 class Tracklist extends React.Component {
   render() {

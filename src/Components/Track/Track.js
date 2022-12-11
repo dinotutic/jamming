@@ -4,8 +4,12 @@ import "./Track.css";
 class Track extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { showPlayButton: true };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+  }
+  updatePlayButton() {
+    this.setState({ showPlayButton: !showPlayButton });
   }
   addTrack = () => {
     this.props.onAdd(this.props.track);
@@ -33,6 +37,9 @@ class Track extends React.Component {
     return (
       <div className="Track">
         <div className="Track-information">
+          <button className="Preview-button" onClick={this.updatePlayButton}>
+            Preview
+          </button>
           <h3>{this.props.track.name}</h3>
           <p>
             {this.props.track.artist} | {this.props.track.album}
