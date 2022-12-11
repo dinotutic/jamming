@@ -9,7 +9,8 @@ class Track extends React.Component {
     this.removeTrack = this.removeTrack.bind(this);
   }
   updatePlayButton() {
-    this.setState({ showPlayButton: !showPlayButton });
+    let playButton = this.state.showPlayButton;
+    this.setState({ showPlayButton: !playButton });
   }
   addTrack = () => {
     this.props.onAdd(this.props.track);
