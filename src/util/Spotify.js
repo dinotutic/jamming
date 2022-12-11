@@ -1,6 +1,6 @@
 const clientId = "c39c93bbf05745fb986d1e566004eb31";
 // Hosted on https://jammingcademy.surge.sh/, but save playlist does not work
-const redirectUri = "http://localhost:3000";
+const redirectUri = "https://jamming2.netlify.app";
 let accessToken = "";
 
 export const Spotify = {
